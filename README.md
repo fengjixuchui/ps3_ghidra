@@ -7,6 +7,16 @@ Here is stupid script made from one of already existing ones. You need to run it
 
 Is just looking for hex pattern of      stdu        r1, and create function there. For now it scan only undefinied parts, that why need to run before analyze. Seems to not cause any issues, you can run autoanalyze right when it finish.
 
+## CELL PPU Processor Module by Pablo / kozzarov
+
+CELL PPU procesor module. Based on standard Ghidra PPC64-32.
+
+Features: 
+
+* Shown in recommended processors
+
+* Fixed Function Start Finder. Originally Ghidra search for STWU, which is wrong for CELL, and made function finding literally not working. 
+
 ## ps3.py by aerosoul94
 nasty script
 
