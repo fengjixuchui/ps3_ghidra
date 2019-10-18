@@ -1,0 +1,30 @@
+<patternlist>
+  <patternpairs totalbits="32" postbits="16">
+    <prepatterns>
+      <data>0x4e800020 </data> <!-- BLR -->
+      <data>0x4e800020 0x60000000</data> <!-- BLR, nop -->
+      <data>010010.. 0x.. 0x.. ......00 </data> <!-- B xxxxx -->
+      <data>010010.. 0x.. 0x.. ......00 0x60000000 </data> <!-- B xxxxx, nop -->
+    </prepatterns>
+    <postpatterns>
+      <data>0x7c2c0b78 0x38 0x21 ........ ........ 0x91810000 </data> <!--  or r12,r1,r1; stw r12,0x0(r1) -->
+      <data>........ ........ ........ ........ 01111100 00001000 00000010 10100110 </data> <!--....... mfspr r0, LR -->
+      <possiblefuncstart/>
+    </postpatterns>
+  </patternpairs>
+  <patternpairs totalbits="32" postbits="16">
+    <prepatterns>
+      <data>0x4e800020 </data> <!-- BLR -->
+      <data>0x4e800020 0x60000000 </data> <!-- BLR, nop -->
+      <data>010010.. 0x.. 0x.. ......00 </data> <!-- B xxxxx -->
+      <data>010010.. 0x.. 0x.. ......00 0x60000000 </data> <!-- B xxxxx, nop -->
+    </prepatterns>
+    <postpatterns>
+      <data>01111100 ........ ........ ........ 011111.. ........ 00000010 10100110 11111000 00100001 1111.... ........ </data>
+      <data>11111000 00100001 1111.... ........ 011111.. ........ 00000010 10100110 </data> <!--stdu r1, -0x..(r1) -> mfspr .., LR -->
+      <data>00111000 ........ ........ ........ 011111.. ........ 00000010 10100110 11111000 00100001 1111.... ........ </data><!--addi/li .., .. -> mfspr .., LR -> stdu r1, -0x..(r1) -->
+      <data>01111101 10000000 00000000 00100110 11111000 00100001 1111.... ........ </data> <!--mfcr r12, stdu r1, -0x..(r1) -->
+     <funcstart/>
+    </postpatterns>
+  </patternpairs>
+</patternlist>
